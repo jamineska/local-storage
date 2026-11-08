@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Gestor de Tienda de Ropa</title>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Gestión de lista de Productos</h2>
+        <!--Formulario de entrada de productos-->
+    <form id="formulario-producto">
+        <imput type="text" id="nombre-producto" placeholder="Nombre del producto..." required>
+            <button type="submit">Agregar Producto</button>
+    </form>
+    <!--Tabla de productos separada porcolumnas con etiquetas th-->
+     <table>
+        <thead>
+            <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="lista-productos">
+            <!--Las filas se generarán dinamicamente con JavaScript-->
+        </tbody>
+     </table>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
