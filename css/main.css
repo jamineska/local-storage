@@ -1,7 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color:rgb(238, 242, 243);
-    padding: 30px;
+    padding: 20px;
 }
 .container {
     max-width: 600px;
@@ -66,8 +74,24 @@ th {
     background-color: rgb(189, 33, 48);
 }
 
-/* adaptación para móviles */
-@media screen(max-600px) {
+.fullContainer {
+    background-color: rgb(51, 51, 51);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.fullContainer a {
+    color: rgb(40, 167, 69) ;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* adaptación para móviles menores a 768px */
+@media screen and (max-width: 768px) {
     body {
         padding: 10px;
     }
@@ -82,8 +106,20 @@ th {
         font-size: 14px;
         padding: 10px;
     }
+
+    .container {
+        padding: 15px;
+        overflow-x: hidden;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap; /* evita que los textos se partan feo en varias lineas */
+    }
+
     th, td {
         padding: 8px 10px;
-font-size: 14px;
+        font-size: 14px;
     }
 }

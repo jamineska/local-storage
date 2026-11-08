@@ -9,10 +9,10 @@
 <body>
 
     <div class="container">
-        <h2>Gestión de lista de Productos</h2>
+        <h2>Carrito</h2>
         <!--Formulario de entrada de productos-->
     <form id="formulario-producto">
-        <imput type="text" id="nombre-producto" placeholder="Nombre del producto..." required>
+        <input type="text" id="nombre-producto" placeholder="Escribe una prenda..." required>
             <button type="submit">Agregar Producto</button>
     </form>
     <!--Tabla de productos separada porcolumnas con etiquetas th-->
@@ -20,6 +20,7 @@
         <thead>
             <tr>
             <th>Producto</th>
+            <th>Precio</th>
             <th>Cantidad</th>
             <th>Acciones</th>
             </tr>
@@ -27,9 +28,14 @@
         <tbody id="lista-productos">
             <!--Las filas se generarán dinamicamente con JavaScript-->
         </tbody>
-     </table>
+     </table>    
     </div>
 
+    <!--contacto y pie de página-->
+    <footer class="fullContainer">
+        <p>&copy; 2026 Registrate a nuestro Club. Todos los derechos reservados.</p>
+        <p><a href="mailto:contacto@mipaginaweb.com">contacto@mipaginaweb.com</a></p>
+    </footer>
     <script src="js/main.js"></script>
 </body>
 </html>

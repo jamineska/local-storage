@@ -35,7 +35,7 @@ const tablaProductos = document.querySelector("#lista-productos");
 
 //local storage (memoria).
 //Vamos a cargar todo que este guardado. Caso esté vacio, empezaremos con una lista vacía.
-let productos = JSON.parse(localStorage.getItem("productos")) || [];
+let productos = JSON.parse(localStorage.getItem("producto")) || [];
 
 //agrengando producto - estructura submit:
 formulario.addEventListener("submit", function(event) { 
@@ -56,11 +56,11 @@ formulario.addEventListener("submit", function(event) {
     if (productoExistente) {
         productoExistente.cantidad++; 
     } else {
-        productos.push({nombre: nombre, cantidad: 1});//caso sea producto nuevo, lo añadimos con la cantidad inicial 1.
+        productos.push({nombre: nombre, precio: "29,99", cantidad: 1});//caso sea producto nuevo, lo añadimos con la cantidad inicial 1.
     }
 
-    localStorage.setItem("productos", JSON.stringify(productos));//Guardando la lista actualizada en local storage (memoria).  
-    inputProducto.values = ""; //Limpiar: dejar el cuadro de texto vacío para el siguiente producto.   
+    localStorage.setItem("producto", JSON.stringify(productos));//Guardando la lista actualizada en local storage (memoria).  
+    inputProducto.value = ""; //Limpiar: dejar el cuadro de texto vacío para el siguiente producto.   
     mostrarProductos();//Volvemos a dibujar la tabla para ver los cambios.
 });
 
@@ -73,19 +73,23 @@ function mostrarProductos() {
         const celdaNombre = document.createElement("td"); // creamos la celda del nombre <td>.
         celdaNombre.textContent = producto.nombre;
 
+        const celdaPrecio = document.createElement("td");
+        celdaPrecio.textContent = producto.precio + " €";
+
         const celdaCantidad = document.createElement("td");// creamos la celda cantidad <td>.
         celdaCantidad.textContent = producto.cantidad;
 
         const celdaAcciones = document.createElement("td");// creamos la celda acciones <td>.
-        const celdaEliminar = document.createElement("button");// creamos la celda eliminar <td>.
-        celdaEliminar.textContent = "Eliminar";
-        celdaEliminar.className = "btn-Eliminar";
+        const botonEliminar = document.createElement("button");// creamos la celda eliminar <td>.
+        botonEliminar.textContent = "Eliminar";
+        botonEliminar.className = "btn-Eliminar";
 
-        celdaEliminar.onclick = function () { // asignando función de eliminar al hacer click.
+        botonEliminar.onclick = function () { // asignando función de eliminar al hacer click.
             eliminarProducto(indice);
         };
-        celdaAcciones.appendChild(celdaEliminar); // metemos el boton dentro de celda de acciones.
+        celdaAcciones.appendChild(botonEliminar); // metemos el boton dentro de celda de acciones.
         fila.appendChild(celdaNombre);
+        fila.appendChild(celdaPrecio);
         fila.appendChild(celdaCantidad);
         fila.appendChild(celdaAcciones);
 
@@ -101,7 +105,7 @@ function eliminarProducto(indice) {
         productos.splice(indice, 1);
     }
    
-    localStorage.setItem("productos", JSON.stringify(productos)); //guardar los cambios en local storage y actualizar la tabla.
+    localStorage.setItem("producto", JSON.stringify(productos)); //guardar los cambios en local storage y actualizar la tabla.
     mostrarProductos();
 }
 
@@ -113,9 +117,9 @@ productos = JSON.parse(localStorage.getItem("producto"));
 if (productos === null) { // caso no hay nada guardado, creamos la lista de ropa por defecto.
 
 productos = [
-    {nombre:"Camiseta negra", cantidad: 5},
-    {nombre:"Pantalón Vaquero", cantidad: 2},
-    {nombre:"Sudadera con Capucha", cantidad: 3},
+    {nombre:"Camiseta negra", precio: "19.99", cantidad: 5},
+    {nombre:"Pantalón Vaquero", precio: "39.99", cantidad: 2},
+    {nombre:"Sudadera con Capucha", precio: "45.00", cantidad: 3},
 ];
 
 localStorage.setItem("producto", JSON.stringify(productos));//guardamos la ropa por defecto en la memoria usando la clave unificada.
