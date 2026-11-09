@@ -40,9 +40,9 @@ let productos = JSON.parse(localStorage.getItem("producto")) || [];
 //agrengando producto - estructura submit:
 formulario.addEventListener("submit", function(event) { 
     event.preventDefault();//evitar que la página se cargue sola.
-    const nombre = inputProducto.value.trim(); //capturar el valos que el usuario escriba.
+    const nombre = inputProducto.value.trim(); //capturar los valores que el usuario escriba.
     const productoExistent = productos.find(function(p) { //buscar duplicados.
-        return p.nombre.toLowerCase() === nombre.toLowerCase();
+        return p.nombre.toLowerCase() === nombre.toLowerCase(); 
     });
 
     //Validaciones:
@@ -53,8 +53,8 @@ formulario.addEventListener("submit", function(event) {
     }
 
     // si ya existe producto, aumentaremos el contador en 1.
-    if (productoExistente) {
-        productoExistente.cantidad++; 
+    if (productoExistent) {
+        productoExistent.cantidad++; 
     } else {
         productos.push({nombre: nombre, precio: "29,99", cantidad: 1});//caso sea producto nuevo, lo añadimos con la cantidad inicial 1.
     }
